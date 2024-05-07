@@ -1,35 +1,26 @@
-import "./App.css";
-import { useState } from "react";
-import Navbar from "./components/Navbar";
-import TableHeader from "./components/TableHeader";
-import StudentCard from "./components/StudentCard";
-
-import studentsData from "./assets/students.json";
-
-function App() {
-  const [students, setStudents] = useState(studentsData);
-  const [fullName, setFullName] = useState("");
-  const [image, setImage] = useState("");
-  const [phone, setPhone] = useState("");
-  const [email, setEmail] = useState("");
-  const [graduationYear, setGraduationYear] = useState (2023);
-  const [graduated, setGraduated] = useState(false);
+function AddStudent ({students, setStudents}) {
+    
+    const [fullName, setFullName] = useState("");
+    const [image, setImage] = useState("");
+    const [phone, setPhone] = useState("");
+    const [email, setEmail] = useState("");
+    const [graduationYear, setGraduationYear] = useState (2023);
+    const [graduated, setGraduated] = useState(false);
+    
   
-
-  const handleFullName = (e) => setFullName(e.target.value);
-  const handleImage = (e) => setImage(e.target.value);
-  const handlePhone = (e) => setPhone(e.target.value);
-const handleEmail = (e) => setEmail(e.target.value);
-const handleGraduationYear = (e) => setGraduationYear(e.target.value);
-const handleGraduated =(e)=> setGraduated(e.target.checked);
-
-const handleSubmit = (e)=> {
-  e.preventDefault();
-const newStudent = {fullName, image, phone, email, graduationYear, graduated};
-setStudents([newStudent, ...studentsData]) };
+    const handleFullName = (e) => setFullName(e.target.value);
+    const handleImage = (e) => setImage(e.target.value);
+    const handlePhone = (e) => setPhone(e.target.value);
+  const handleEmail = (e) => setEmail(e.target.value);
+  const handleGraduationYear = (e) => setGraduationYear(e.target.value);
+  const handleGraduated =(e)=> setGraduated(e.target.checked);
   
-
-  return (
+  const handleSubmit = (e)=> {
+    e.preventDefault();
+  const newStudent = {fullName, image, phone, email, graduationYear, graduated};
+  setStudents([newStudent, ...studentsData]) };
+    return(
+    <>
     <div className="App pt-20">
       <Navbar />
 
@@ -105,8 +96,8 @@ setStudents([newStudent, ...studentsData]) };
           return <StudentCard key={student.email} {...student} />;
         })}
     </div>
-  );
+    </>
+)
+
 }
-
-
-export default App;
+export default AddStudent
